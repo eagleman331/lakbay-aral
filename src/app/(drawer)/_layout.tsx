@@ -11,6 +11,7 @@ const DrawerLayout = () => {
         name="index"
         options={{
           headerTitle: 'Home',
+          headerShown: false,
           drawerLabel: 'Home',
           drawerIcon: ({ size, color }) => (
             <Ionicons name="home-outline" size={size} color={color} />
@@ -20,6 +21,7 @@ const DrawerLayout = () => {
       <Drawer.Screen
         name="(tabs)"
         options={{
+          headerShown: false,
           headerTitle: 'Tabs',
           drawerLabel: 'Tabs',
           drawerIcon: ({ size, color }) => (

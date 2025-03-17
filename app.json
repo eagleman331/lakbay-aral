@@ -3,15 +3,20 @@
     "name": "lakbay-aral",
     "slug": "lakbay-aral",
     "version": "1.0.0",
-
     "scheme": "lakbay-aral",
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/favicon.png"
     },
     "plugins": [
       "expo-router",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ],
       [
         "expo-dev-launcher",
         {
@@ -21,28 +26,42 @@
     ],
     "experiments": {
       "typedRoutes": true,
-
       "tsconfigPaths": true
     },
-
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-
+    "icon": "./src/assets/CampTours.png",
     "userInterfaceStyle": "light",
-
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./src/assets/CampTours.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.eagleman33.lakbayaral"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/CampTours.png",
         "backgroundColor": "#ffffff"
+      },
+      "permissions": [],
+      "config": {
+        "googleMaps": {
+          "apiKey":"AIzaSyAYtzfMLkMyYh9LbIXIcnzULhmbBrU9LH0"
+        }
+      },
+      "package": "com.eagleman33.lakbayaral"
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "030212b1-0548-4693-b976-3a2bf3c892f5"
       }
     }
   }

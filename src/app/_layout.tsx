@@ -1,6 +1,7 @@
-import '../global.css';
+import '../../global.css';
 
 import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export const unstable_settings = {
@@ -15,6 +16,7 @@ export default function RootLayout() {
         <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ title: 'Modal', presentation: 'modal' }} />
       </Stack>
+      <StatusBar style='auto'/>
     </GestureHandlerRootView>
   );
 }
