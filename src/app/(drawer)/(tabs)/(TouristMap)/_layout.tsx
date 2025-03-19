@@ -8,6 +8,7 @@ export default function MapLayout() {
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="SiteCategory" options={{ headerShown: false }} />
       <Stack.Screen name="SiteDetails" options={{ headerShown: false }} />
+      <Stack.Screen name="VideoScreen" options={{ headerShown: false }} />
     </Stack>
   );
 }

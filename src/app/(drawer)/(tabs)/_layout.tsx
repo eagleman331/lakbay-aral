@@ -1,5 +1,4 @@
-import { Stack, Tabs } from 'expo-router';
-import { TabBarIcon } from '~/src/components/TabBarIcon';
+import { Tabs } from 'expo-router';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Entypo from '@expo/vector-icons/Entypo';
 

@@ -1,28 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import MapView, { Marker, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import {
-  Button,
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
   useWindowDimensions,
   View,
 } from 'react-native';
 import * as Location from 'expo-location';
-import MapViewDirections from 'react-native-maps-directions';
-import BottomSheet from '@gorhom/bottom-sheet';
 import { Stack } from 'expo-router';
 
 const SiteCategory = () => {
-  const [locRegion, setLocRegion] = useState(null);
-  const [driverLocation, setDriverLocation] = useState(null);
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
-  const { width, height } = useWindowDimensions();
-  const bottomSheetRef = useRef(null);
 
   useEffect(() => {
     async function getCurrentLocation() {

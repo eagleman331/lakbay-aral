@@ -10,6 +10,13 @@
       "favicon": "./src/assets/favicon.png"
     },
     "plugins": [
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": true,
+          "supportsPictureInPicture": true
+        }
+      ],
       "expo-router",
       [
         "expo-location",
@@ -29,10 +36,10 @@
       "tsconfigPaths": true
     },
     "orientation": "portrait",
-    "icon": "./src/assets/CampTours.png",
+    "icon": "./src/assets/lakbatAralIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./src/assets/CampTours.png",
+      "image": "./src/assets/lakbatAralIcon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -45,7 +52,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/CampTours.png",
+        "foregroundImage": "./src/assets/lakbatAralIcon.png",
         "backgroundColor": "#ffffff"
       },
       "permissions": [],

@@ -1,4 +1,4 @@
-import { Stack } from 'expo-router';
+
 import {
   FlatList,
   Image,
@@ -9,12 +9,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { Container } from '~/src/components/Container';
-import { ScreenContent } from '~/src/components/ScreenContent';
-import { testImages } from '~/src/assets/TestData/imagesTestInvites';
 
 import { IconsCampTour } from '~/src/assets/DataApp/CampTourSpots';
 import { FlatCategories } from '~/src/components/CampTourMarquee';
@@ -26,9 +21,13 @@ export default function Home() {
     <>
       {/* <Stack.Screen options={{ title: 'Tab One' }} /> */}
       <View className="flex-1  bg-gray-400">
+      <Image
+          className="absolute left-0 top-0 h-full w-full"
+          source={require('../../../../assets/Background/RopeCourse.png')}
+        />
         <SafeAreaView>
           <View className="mt-16 ml-5" >
-            <Text className="text-4xl text-stone-800">Camp Tour</Text>
+            <Text className="text-4xl font-bold text-neutral-50">Camp Tour</Text>
           </View>
           {/* Container of category of places */}
           <View className="items-center mt-3">
@@ -39,6 +38,7 @@ export default function Home() {
               }
             />
           </View>
+  
         </SafeAreaView>
       </View>
     </>
