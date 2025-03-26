@@ -1,10 +1,9 @@
-
 import { useRouter } from 'expo-router';
 import { Image, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
 export const FlatCategories = ({ item }) => {
-const router = useRouter();
+  const router = useRouter();
   const { width, height } = useWindowDimensions();
   const scale = useSharedValue(1);
   const animatedStyle = useAnimatedStyle(() => ({
@@ -14,7 +13,9 @@ const router = useRouter();
     <Pressable
       onPressIn={() => (scale.value = withSpring(0.9, { damping: 5, stiffness: 150 }))} // Press effect
       onPressOut={() => (scale.value = withSpring(1, { damping: 5, stiffness: 150 }))} // Release effect
-      onPress={() => router.push({pathname:"/(drawer)/(tabs)/(TouristMap)/SiteDetails", params:item})} // OnPress event
+      onPress={() =>
+        router.push({ pathname: '/(drawer)/(tabs)/(TouristMap)/SiteDetails', params: item })
+      } // OnPress event
     >
       <Animated.View
         key={item.id}
@@ -26,9 +27,7 @@ const router = useRouter();
         ]}>
         <View className="mt-4 w-3/5">
           <Text className="ml-4 text-lg font-bold text-slate-950 antialiased">{item.title}</Text>
-          <Text className="ml-4 text-wrap text-base antialiased">
-            {item.description}{' '}
-          </Text>
+          <Text className="ml-4 text-wrap text-base antialiased">{item.description} </Text>
         </View>
 
         <View className="w-2/5 items-center justify-center">
@@ -42,8 +41,6 @@ const router = useRouter();
     </Pressable>
   );
 };
-
-
 
 const styles = StyleSheet.create({
   button: {

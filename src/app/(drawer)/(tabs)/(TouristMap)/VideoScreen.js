@@ -5,6 +5,7 @@ import { useEvent } from 'expo';
 
 const videoSource =
   'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+const videoYoutube = 'https://www.youtube.com/watch?v=TyZtrS0_bi0';
 
 const VideoScreen = () => {
   const player = useVideoPlayer(videoSource, (player) => {

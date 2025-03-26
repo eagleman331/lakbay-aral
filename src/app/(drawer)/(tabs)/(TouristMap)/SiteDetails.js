@@ -1,11 +1,25 @@
-import { View, Text, useWindowDimensions, FlatList, Image, Button, Pressable } from 'react-native';
-import React from 'react';
+import {
+  View,
+  Text,
+  useWindowDimensions,
+  FlatList,
+  Image,
+  Button,
+  Pressable,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from 'react-native';
+import React, { useRef } from 'react';
+import LottieView from 'lottie-react-native';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { router, useLocalSearchParams } from 'expo-router';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import MapLottieButton from '../../../../components/ButtonComponent/MapLottieButton'
 
 const SiteDetails = () => {
   const { width, height } = useWindowDimensions();
   const params = useLocalSearchParams(); // Retrieves query params
+  const animation = useRef(null);
 
   const scale = useSharedValue(1);
   const animatedStyle = useAnimatedStyle(() => ({
@@ -38,31 +52,34 @@ const SiteDetails = () => {
             <Text className="font-bold">Aminities</Text>
             <Text className="ml-2 mt-2 font-light">{params.Aminities}</Text>
           </View>
-          <View className='flex-row ' style={{justifyContent:'space-around'}}>
+          <View className="mt-10 flex-row" style={{ justifyContent: 'space-around' }}>
             <Pressable
-              onPressIn={() => (scale.value = withSpring(0.9, { damping: 5, stiffness: 150 }))} // Press effect
-              onPressOut={() => (scale.value = withSpring(1, { damping: 5, stiffness: 150 }))} // Release effect
-              onPress={() => router.push({ pathname: '/(drawer)/(tabs)/(TouristMap)/VideoScreen' })} // OnPress event
-            >
+              onPressIn={() => (scale.value = withSpring(0.9, { damping: 5, stiffness: 150 }))}
+              onPressOut={() => (scale.value = withSpring(1, { damping: 5, stiffness: 150 }))}
+              onPress={() =>
+                router.push({ pathname: '/(drawer)/(tabs)/(TouristMap)/VideoScreen' })
+              }>
               <Animated.View
-                className="w-1/5 rounded-2xl bg-red-500 justify-center"
-                style={{ animatedStyle, height: height * 0.12, width:width*.3 }}>
-                <Text className='text-center' >warren</Text>
+                className="w-1/5 justify-center rounded-2xl border-amber-400 "
+                style={[
+                  animatedStyle,
+                  { height: height * 0.12, width: width * 0.3, borderWidth: 0.5 },
+                ]}>
+                <View style={{ alignItems: 'center' }}>
+                  <LottieView
+                    autoPlay
+                    ref={animation}
+                    style={{
+                      width: 120,
+                      height: 120,
+                    }}
+                    source={require('../../../../assets/lottie/PlayAnime.json')}
+                  />
+                </View>
               </Animated.View>
             </Pressable>
-            <View className='bg-slate-500' style={{justifyContent:'flex-end'}}>
-              <Text>Directions</Text>
-            </View>
+            <MapLottieButton pathDist='/(drawer)/(tabs)/(TouristMap)/SiteCategory' />
           </View>
-
-          <Button
-            onPress={() =>
-              router.push({
-                pathname: '/(drawer)/(tabs)/(TouristMap)/VideoScreen',
-              })
-            } // OnPress event
-            title="Play Video"
-          />
         </View>
       </View>
     </>
@@ -70,3 +87,13 @@ const SiteDetails = () => {
 };
 
 export default SiteDetails;
+
+const styles = StyleSheet.create({
+  button: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 5,
+  },
+});

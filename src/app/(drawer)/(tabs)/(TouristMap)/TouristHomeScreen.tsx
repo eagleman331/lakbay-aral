@@ -1,4 +1,3 @@
-
 import {
   FlatList,
   Image,
@@ -14,31 +13,29 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { IconsCampTour } from '~/src/assets/DataApp/CampTourSpots';
 import { FlatCategories } from '~/src/components/CampTourMarquee';
 
-export default function Home() {
+export default function TouristHomeScreen() {
   const { width, height } = useWindowDimensions();
 
   return (
     <>
       {/* <Stack.Screen options={{ title: 'Tab One' }} /> */}
       <View className="flex-1  bg-gray-400">
-      <Image
+        <Image
           className="absolute left-0 top-0 h-full w-full"
           source={require('../../../../assets/Background/RopeCourse.png')}
         />
         <SafeAreaView>
-          <View className="mt-16 ml-5" >
+          <View className="ml-5 mt-16">
             <Text className="text-4xl font-bold text-neutral-50">Camp Tour</Text>
           </View>
           {/* Container of category of places */}
-          <View className="items-center mt-3">
+          <View className="mt-3 items-center">
             <FlatList
               data={IconsCampTour}
               keyExtractor={(item) => item.id.toString()}
-              renderItem={({ item }) => <FlatCategories item={item} />
-              }
+              renderItem={({ item }) => <FlatCategories item={item} />}
             />
           </View>
-  
         </SafeAreaView>
       </View>
     </>
