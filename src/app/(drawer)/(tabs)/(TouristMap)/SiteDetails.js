@@ -25,7 +25,12 @@ const SiteDetails = () => {
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
   }));
-  console.log('params', params);
+
+  const locCoord = {
+    latitude: params.latitude,
+    longitude: params.longitude
+  } 
+
   return (
     <>
       <View className="flex-1 bg-slate-300">
@@ -78,7 +83,7 @@ const SiteDetails = () => {
                 </View>
               </Animated.View>
             </Pressable>
-            <MapLottieButton pathDist='/(drawer)/(tabs)/(TouristMap)/SiteCategory' />
+            <MapLottieButton pathDist='/(drawer)/(tabs)/(TouristMap)/SiteCategory' itemData= {params} />
           </View>
         </View>
       </View>

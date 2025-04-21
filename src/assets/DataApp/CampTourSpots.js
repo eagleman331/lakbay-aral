@@ -7,7 +7,9 @@ export const IconsCampTour = [
     imageFacility: require('../../assets/facilities/firingRange.jpg'),
     purpose: 'To enhance the shooting skills of individuals in pistol and rifle',
     location: 'Located inside Camp Evangelista',
-    Aminities: 'Three firing bay'
+    Aminities: 'Three firing bay',
+    latitude: 14.545061029644893,
+    longitude: 121.37327096723615,
   },
   {
     id: 2,
@@ -17,7 +19,9 @@ export const IconsCampTour = [
     imageFacility: require('../../assets/facilities/grandstand.jpg'),
     purpose: 'For Civil Military Operations Activities and location of training',
     location: 'Located inside Camp Evangelista',
-    Aminities: 'Multipurpose grandstand, obstacle course and soccer field'
+    Aminities: 'Multipurpose grandstand, obstacle course and soccer field',
+    latitude: 14.540656777769863,
+    longitude: 121.3712650955575,
   },
   {
     id: 3,
@@ -27,6 +31,8 @@ export const IconsCampTour = [
     imageFacility: require('../../assets/facilities/swimmingPool.jpg'),
     purpose: 'For recreational activity and training',
     location: 'Located inside Camp Evangelista',
-    Aminities: 'Kids swimming pool and adult swimming pool'
+    Aminities: 'Kids swimming pool and adult swimming pool',
+    latitude: 14.538197335702616,
+    longitude: 121.36834666755193,
   },
 ];

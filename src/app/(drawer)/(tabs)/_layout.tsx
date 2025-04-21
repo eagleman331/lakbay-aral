@@ -6,6 +6,7 @@ import Entypo from '@expo/vector-icons/Entypo';
 export default function TabLayout() {
   return (
     <Tabs
+    initialRouteName='(Faqs)'
       screenOptions={{
         tabBarActiveTintColor: 'black',
       }}>
@@ -18,9 +19,17 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="(Faqs)"
         options={{
           title: 'FAQs',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <Entypo name="clipboard" size={24} color="black" />,
+        }}
+      />
+       <Tabs.Screen
+        name="(Information)"
+        options={{
+          title: 'Info',
           headerShown: false,
           tabBarIcon: ({ color }) => <Entypo name="clipboard" size={24} color="black" />,
         }}

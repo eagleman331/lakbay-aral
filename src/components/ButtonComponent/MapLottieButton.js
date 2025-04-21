@@ -4,7 +4,7 @@ import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-na
 import LottieView from 'lottie-react-native';
 import { router } from 'expo-router';
 
-const MapLottieButton = ({pathDist}) => {
+const MapLottieButton = ({pathDist, itemData}) => {
   const { width, height } = useWindowDimensions();
   const animation = useRef(null);
 
@@ -17,7 +17,7 @@ const MapLottieButton = ({pathDist}) => {
       onPressIn={() => (scale.value = withSpring(0.9, { damping: 5, stiffness: 150 }))}
       onPressOut={() => (scale.value = withSpring(1, { damping: 5, stiffness: 150 }))}
       onPress={() =>
-        router.push({ pathname: pathDist })}
+        router.push({ pathname: pathDist, params: itemData })}
     >
       <Animated.View
         className="w-1/5 justify-center rounded-2xl border-amber-400"
