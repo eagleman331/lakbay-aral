@@ -45,7 +45,8 @@ const CustomDrawerContent = (props) => {
         <TouchableOpacity
           className="flex-row"
           style={{ paddingLeft: 15, marginTop: 15 }}
-          onPress={() => router.push({ pathname: '/(drawer)/(tabs)/(Faqs)/HomeFaqsScreen' })}>
+          // onPress={() => router.push({ pathname: '/(drawer)/paywallScreen' })}
+          >
           <Feather name="coffee" size={24} color="black" />
           <Text style={{ paddingLeft: 10, alignSelf: 'center' }}>Give a Coffee</Text>
         </TouchableOpacity>
@@ -85,6 +86,17 @@ const DrawerLayout = () => {
             <Link href="/modal" asChild>
               <HeaderButton />
             </Link>
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="paywallScreen"
+        options={{
+          headerTitle: 'Paywall',
+          headerShown: false,
+          drawerLabel: 'Paywall',
+          drawerIcon: ({ size, color }) => (
+            <Ionicons name="home-outline" size={size} color={color} />
           ),
         }}
       />

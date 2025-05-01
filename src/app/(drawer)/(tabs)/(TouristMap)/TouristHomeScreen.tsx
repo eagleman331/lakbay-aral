@@ -25,16 +25,17 @@ export default function TouristHomeScreen() {
           source={require('../../../../assets/Background/RopeCourse.png')}
         />
         <SafeAreaView>
-          <View className="ml-5 mt-16">
+          <View className=" ml-5 mt-16" style={{ height: height*0.05 }}>
             <Text className="text-4xl font-bold text-neutral-50">Camp Tour</Text>
           </View>
           {/* Container of category of places */}
-          <View className="mt-3 items-center">
+          <View className=" mt-3 items-center" style={{height: height*0.8}}>
             <FlatList
               data={IconsCampTour}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => <FlatCategories item={item} />}
             />
+
           </View>
         </SafeAreaView>
       </View>

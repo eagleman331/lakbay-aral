@@ -2108,6 +2108,11 @@
   dependencies:
     nanoid "3.3.8"
 
+"@revenuecat/purchases-typescript-internal@13.28.1":
+  version "13.28.1"
+  resolved "https://registry.yarnpkg.com/@revenuecat/purchases-typescript-internal/-/purchases-typescript-internal-13.28.1.tgz#ead36ba11723e56bf6836632618288386fe7f925"
+  integrity sha512-m/i+EGaJ/sBS6oPAeUuXtwl1UKWTAN4IzppkV8WACjNDy/tEsOCG6MVoz7CeQHz02chFFzyTXthjZLQcH0x12A==
+
 "@rneui/base@^4.0.0-rc.8":
   version "4.0.0-rc.8"
   resolved "https://registry.yarnpkg.com/@rneui/base/-/base-4.0.0-rc.8.tgz#6fbf9b3049a9207d47c3c53b70c0f68f3627a170"
@@ -6992,6 +6997,21 @@ react-native-maps@1.18.0:
   integrity sha512-S17nYUqeMptgIPaAZuVRo+eRelPreBBYQWw6jsxU7qQ12p+THSfFaqabcNn7fBmsXhT3T27iIl8ek8v1H8BaGw==
   dependencies:
     "@types/geojson" "^7946.0.13"
+
+react-native-purchases-ui@^8.9.5:
+  version "8.9.5"
+  resolved "https://registry.yarnpkg.com/react-native-purchases-ui/-/react-native-purchases-ui-8.9.5.tgz#e76400bb1b9c6b0ffc40fa0187c8773d6c4cd488"
+  integrity sha512-GKfIi0c8IdCh0Ps85dk2QQQTRP5840aymJ5klb6+Iw4CKxPFQocWreoD8FN3XPBTM+rf5cezDeFeYkl65TEG+g==
+  dependencies:
+    "@revenuecat/purchases-typescript-internal" "13.28.1"
+    react-native-purchases "8.9.5"
+
+react-native-purchases@8.9.5, react-native-purchases@^8.9.5:
+  version "8.9.5"
+  resolved "https://registry.yarnpkg.com/react-native-purchases/-/react-native-purchases-8.9.5.tgz#e145b21c8483bb35de9eaf7f69f242621954d290"
+  integrity sha512-ru4642p7qTTszy98nK2ndn9prVo6GNBsTSqZpgGo07ma72WMqojx//iwI9ZOMXsH4eL4hyxfGgxoUPBC8kAK2A==
+  dependencies:
+    "@revenuecat/purchases-typescript-internal" "13.28.1"
 
 react-native-ratings@^8.1.0:
   version "8.1.0"
