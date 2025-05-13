@@ -26,14 +26,6 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <Entypo name="clipboard" size={24} color="black" />,
         }}
       />
-       <Tabs.Screen
-        name="(Information)"
-        options={{
-          title: 'Info',
-          headerShown: false,
-          tabBarIcon: ({ color }) => <Entypo name="clipboard" size={24} color="black" />,
-        }}
-      />
       <Tabs.Screen
         name="index"
         options={{href:null,}}
