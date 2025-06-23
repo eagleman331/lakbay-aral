@@ -51,6 +51,7 @@
       "bundleIdentifier": "com.eagleman33.lakbayaral"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/lakbatAralIcon.png",
         "backgroundColor": "#ffffff"

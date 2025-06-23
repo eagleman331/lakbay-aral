@@ -25,8 +25,7 @@ const MapLottieButton = ({pathDist, itemData}) => {
           animatedStyle,
           {
             borderWidth: 0.5,
-            height: height * 0.12,
-            width: width * 0.3,
+            height: height * 0.12, width: width * 0.4,
           },
         ]}>
         <View style={{ alignItems: 'center' }}>

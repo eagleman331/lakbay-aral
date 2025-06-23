@@ -4,7 +4,7 @@ export default function StackLayout() {
   return (
     <Stack>
        <Stack.Screen name="MainFaqScreen" options={{ headerShown: false }} />
-      <Stack.Screen name="HomeFaqsScreen" options={{ headerShown: false }} />
+
      
      
       <Stack.Screen name="SubInfoDataScreen" options={{ headerShown: false }} />

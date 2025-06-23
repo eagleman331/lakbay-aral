@@ -5,6 +5,7 @@ import { router } from 'expo-router';
 import { Divider } from '@rneui/themed';
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from '~/src/utils/firebase';
+import FaqsList from '~/src/components/Marques/FaqsList';
 
 const MainFaqScreen = () => {
   const [faqsData, setFaqsData] = useState([]);
@@ -23,6 +24,7 @@ const MainFaqScreen = () => {
     };
     unsubscribed();
   }, []);
+
   return (
     <View style={{ flex: 1 }}>
       <Image
@@ -44,40 +46,11 @@ const MainFaqScreen = () => {
         {faqsData.map((item, index) => {
           console.log('item', item);
 
-          //   console.log('item', addInfo.);
+          console.log('index', index);
           return (
-            <TouchableOpacity
-              key={index}
-              onPress={() =>
-                router.push({
-                  pathname: '/SubInfoDataScreen',
-                  params: item,
-                })
-              }>
-              <View className="mt-2 p-2">
-                <View style={{ backgroundColor: 'green', borderRadius: 10 }}>
-                  <Text className="p-3 text-lg font-semibold text-white">{item.question}</Text>
-                </View>
-                {/* <Divider width={1} color="white" /> */}
-              </View>
-            </TouchableOpacity>
+            <FaqsList item={item}  key={index}/>
           );
         })}
-        <Text>MainFaqScreen</Text>
-        <TouchableOpacity
-          onPress={() =>
-            router.push({
-              pathname: '/SubInfoDataScreen',
-              params: { name: 'Warren' },
-            })
-          }>
-          <View className="mt-2 p-2" style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <View style={{ backgroundColor: 'green', borderRadius: 10 }}>
-              <Text className="p-3 text-lg font-semibold text-white">Yup a Problem</Text>
-            </View>
-            {/* <Divider width={1} color="white" /> */}
-          </View>
-        </TouchableOpacity>
       </SafeAreaView>
     </View>
   );
