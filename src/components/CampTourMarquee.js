@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { Image, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import Colors from '../assets/constant/Colors';
 
 export const FlatCategories = ({ item }) => {
   const router = useRouter();
@@ -19,7 +20,7 @@ export const FlatCategories = ({ item }) => {
     >
       <Animated.View
         key={item.id}
-        className="flex-row justify-between rounded-lg bg-green-400"
+        className="flex-row justify-between rounded-lg"
         style={[
           styles.button,
           animatedStyle,
@@ -44,6 +45,7 @@ export const FlatCategories = ({ item }) => {
 
 const styles = StyleSheet.create({
   button: {
+    backgroundColor: Colors.juneBud,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.3,

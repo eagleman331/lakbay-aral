@@ -3,10 +3,11 @@ import React from 'react';
 import { Link, router } from 'expo-router';
 import { Divider } from '@rneui/themed';
 import Entypo from '@expo/vector-icons/Entypo';
+import Colors  from '~/src/assets/constant/Colors';
 
 const FaqsDetailScreen = () => {
   return (
-    <View className="flex-1 bg-yellow-300">
+    <View className="flex-1" style={{backgroundColor:Colors.turbo}}>
       <SafeAreaView className="flex-1">
         <View className="ml-5 mt-24">
           <Text className="text-3xl font-bold text-neutral-50">Recruitment</Text>

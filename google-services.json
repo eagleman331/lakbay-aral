@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "583748131537",
+    "project_id": "lakbay-aral-b6617",
+    "storage_bucket": "lakbay-aral-b6617.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583748131537:android:5eb38308d59aa7837103f0",
+        "android_client_info": {
+          "package_name": "com.eagleman33.lakbayaral"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWsY2AerebujzMKrIf3TxN6hW1RlegZSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

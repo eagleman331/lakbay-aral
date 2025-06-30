@@ -13,31 +13,27 @@ import Entypo from '@expo/vector-icons/Entypo';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import * as WebBrowser from 'expo-web-browser';
+import Colors  from '~/src/assets/constant/Colors';
 
 const SubInfoDataScreen = () => {
   const [bullets, setBullets] = useState([]);
   const params = useLocalSearchParams();
-  const { addInfo, answer, otherInfo } = params;
-
+  const { addInfo, answer, otherInfo, question, anotherInfo } = params;
   const { width, height } = useWindowDimensions();
 
-  // const _handlePressButtonAsync = async ()=> {
-
-  // }
-
-  console.log('addInfo', addInfo);
+  console.log('addInfo', typeof addInfo);
   useEffect(() => {
     const unsubsribed = () => {
       setBullets(addInfo.split(','));
     };
     unsubsribed();
   }, []);
-
+console.log('anotherInfo', anotherInfo)
   return (
-    <View className="flex-1 bg-yellow-300">
+    <View className="flex-1" style={{backgroundColor:Colors.turbo}}>
       <SafeAreaView>
-        <View className="ml-5 mt-24" style={{ height: height * 0.05 }}>
-          <Text className="text-4xl font-bold text-neutral-50">General Question</Text>
+        <View className="ml-3 mt-24" style={{ height: height * 0.05 }}>
+          <Text className="text-4xl font-bold  text-neutral-50">FAQs</Text>
         </View>
         {/* <View className="h-6" /> */}
         <Divider
@@ -48,9 +44,9 @@ const SubInfoDataScreen = () => {
           style={{ marginTop: 2, marginLeft: 10 }}
         />
         <ScrollView style={{ height: height * 0.8 }}>
-          <View>
-            <Text className="px-2 py-2 text-2xl font-semibold italic">Answer</Text>
-            <Text className="p-2 text-justify text-lg">sagot</Text>
+        <View>
+            <Text className="px-2 py-2 text-2xl font-semibold italic">Question</Text>
+            <Text className="p-2 text-justify text-lg">{question}</Text>
           </View>
           <Divider
             inset={true}
@@ -60,37 +56,30 @@ const SubInfoDataScreen = () => {
             style={{ marginTop: 2, marginLeft: 10 }}
           />
           <View>
-            <Text className="px-2 py-2 text-2xl font-semibold italic">Title Bullets</Text>
+            <Text className="px-2 py-2 text-2xl font-semibold italic">Answer</Text>
+            <Text className="p-2 text-justify text-lg">{answer}</Text>
+          </View>
+          <Divider
+            inset={true}
+            insetType="right"
+            width={1}
+            color="white"
+            style={{ marginTop: 2, marginLeft: 10 }}
+          />
+          <View>
+            <Text className="px-2 py-2 text-2xl font-semibold italic">Other Information</Text>
             {bullets.map((item, index) => {
               return (
                 <View key={index} className=" flex-row">
                   <View className="mt-1 w-1/12 items-center">
-                    <Feather name="circle" size={20} color="black" />
+                  <Entypo name="controller-record" size={24} color='#464342' />
                   </View>
                   <Text className="w-11/12 px-2 text-justify text-lg">{item}</Text>
                 </View>
               );
             })}
-            <View className=" flex-row">
-              <View className="mt-1 w-1/12 items-center">
-                <Feather name="circle" size={20} color="black" />
-              </View>
-              <Text className="w-11/12 px-2 text-justify text-lg">
-                Somethings to say in the house
-              </Text>
-            </View>
-            <View className=" flex-row">
-              <View className="mt-0.5 w-1/12 items-center">
-                <Entypo name="controller-record" size={24} color="black" />
-              </View>
-              <Text className="w-11/12 px-2 text-justify text-lg">
-                The Army Recruitment Office-Luzon proudly announces the upcoming schedule for the
-                Philippine Army Pre-Entry Examination in the provinces of Cagayan, Isabela and
-                Apayao. This examination serves as a crucial step for individuals seeking to join
-                the distinguished ranks of the Philippine Army, showcasing their dedication,
-                discipline, and commitment to serving the nation with honor.
-              </Text>
-            </View>
+           
+
           </View>
           <Divider
             inset={true}

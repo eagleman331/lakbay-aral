@@ -9,14 +9,14 @@ export const RotcSchoolsList = ({ item }) => {
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
   }));
-  console.log('item', item.image);
+
   return (
     <Pressable
       onPressIn={() => (scale.value = withSpring(0.9, { damping: 5, stiffness: 150 }))} // Press effect
       onPressOut={() => (scale.value = withSpring(1, { damping: 5, stiffness: 150 }))} // Release effect
-      // onPress={() =>
-      //   router.push({ pathname: '/(drawer)/(tabs)/(Rcdg)/RotcDetailScreen', params: item })
-      // } 
+      onPress={() =>
+        router.push({ pathname: '/(drawer)/(tabs)/(Rcdg)/RotcDetailScreen', params: item })
+      } 
     >
       <Animated.View
         key={item.id}

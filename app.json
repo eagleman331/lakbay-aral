@@ -51,7 +51,6 @@
       "bundleIdentifier": "com.eagleman33.lakbayaral"
     },
     "android": {
-      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/lakbatAralIcon.png",
         "backgroundColor": "#ffffff"
@@ -62,7 +61,8 @@
           "apiKey":"AIzaSyAYtzfMLkMyYh9LbIXIcnzULhmbBrU9LH0"
         }
       },
-      "package": "com.eagleman33.lakbayaral"
+      "package": "com.eagleman33.lakbayaral",
+      "googleServicesFile": "./google-services.json"
     },
     "extra": {
       "router": {

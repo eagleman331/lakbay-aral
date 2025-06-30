@@ -1,4 +1,4 @@
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome6, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { Link, router } from 'expo-router';
 import { Drawer } from 'expo-router/drawer';
 
@@ -36,9 +36,18 @@ const CustomDrawerContent = (props) => {
         <TouchableOpacity
           className="flex-row"
           style={{ paddingLeft: 15, marginTop: 15 }}
-          onPress={() => router.push({ pathname: '/(drawer)/(tabs)/(Faqs)/HomeFaqsScreen' })}>
+          onPress={() => router.push({ pathname: '/(drawer)/(tabs)/(Faqs)/MainFaqScreen' })}>
           <Entypo name="clipboard" size={24} color="black" />
           <Text style={{ paddingLeft: 10, alignSelf: 'center' }}>Frequently Asked Questions</Text>
+        </TouchableOpacity>
+        <Divider inset={true} insetType="right" width={1} color="black" style={{ marginTop: 10 }} />
+
+        <TouchableOpacity
+          className="flex-row"
+          style={{ paddingLeft: 15, marginTop: 15 }}
+          onPress={() => router.push({ pathname: '/(drawer)/(tabs)/(Rcdg)/RotcSchoolScreen' })}>
+          <FontAwesome6 name="person-military-rifle" size={24} color="black" />
+          <Text style={{ paddingLeft: 10, alignSelf: 'center' }}>Phil. Army ROTC</Text>
         </TouchableOpacity>
         <Divider inset={true} insetType="right" width={1} color="black" style={{ marginTop: 10 }} />
        

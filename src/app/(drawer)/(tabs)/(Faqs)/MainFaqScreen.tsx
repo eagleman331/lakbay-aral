@@ -1,11 +1,11 @@
-import { View, Text, Image, SafeAreaView } from 'react-native';
+import { View, Text, Image, SafeAreaView, TouchableOpacity  } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
 import { router } from 'expo-router';
 import { Divider } from '@rneui/themed';
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from '~/src/utils/firebase';
 import FaqsList from '~/src/components/Marques/FaqsList';
+import Colors  from '~/src/assets/constant/Colors';
 
 const MainFaqScreen = () => {
   const [faqsData, setFaqsData] = useState([]);
@@ -26,11 +26,11 @@ const MainFaqScreen = () => {
   }, []);
 
   return (
-    <View style={{ flex: 1 }}>
-      <Image
+    <View style={{ flex: 1, backgroundColor: Colors.soaringEagle }}>
+      {/* <Image
         className="absolute left-0 top-0 h-full w-full"
         source={require('../../../../assets/Background/RopeCourse.png')}
-      />
+      /> */}
       <SafeAreaView>
         <View className="ml-5 mt-24">
           <Text className="text-4xl font-bold text-neutral-50">FAQs</Text>
@@ -43,14 +43,11 @@ const MainFaqScreen = () => {
           color="white"
           style={{ marginTop: 2, marginLeft: 10 }}
         />
-        {faqsData.map((item, index) => {
-          console.log('item', item);
-
-          console.log('index', index);
-          return (
-            <FaqsList item={item}  key={index}/>
-          );
-        })}
+        <View className='items-center'>
+          {faqsData.map((item, index) => {
+            return <FaqsList item={item} key={index} />;
+          })}
+        </View>
       </SafeAreaView>
     </View>
   );
