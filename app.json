@@ -10,6 +10,9 @@
       "favicon": "./src/assets/favicon.png"
     },
     "plugins": [
+       "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "@react-native-firebase/crashlytics",
       [
         "expo-video",
         {
@@ -43,12 +46,11 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.eagleman33.lakbayaral"
+      "bundleIdentifier": "com.eagleman33.lakbayaral",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
@@ -58,7 +60,7 @@
       "permissions": [],
       "config": {
         "googleMaps": {
-          "apiKey":"AIzaSyAYtzfMLkMyYh9LbIXIcnzULhmbBrU9LH0"
+          "apiKey": "AIzaSyAql_lhkfFzAyHoXJ1lvXjrjzlREj4v17c"
         }
       },
       "package": "com.eagleman33.lakbayaral",

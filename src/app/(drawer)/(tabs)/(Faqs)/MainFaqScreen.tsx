@@ -1,32 +1,54 @@
-import { View, Text, Image, SafeAreaView, TouchableOpacity  } from 'react-native';
+import { View, Text, Image, SafeAreaView, TouchableOpacity, Button } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { router } from 'expo-router';
 import { Divider } from '@rneui/themed';
-import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
-import { db } from '~/src/utils/firebase';
+
+import { collection, query, where, getDocs, getFirestore } from '@react-native-firebase/firestore';
+
 import FaqsList from '~/src/components/Marques/FaqsList';
-import Colors  from '~/src/assets/constant/Colors';
+import Colors from '~/src/assets/constant/Colors';
 
 const MainFaqScreen = () => {
   const [faqsData, setFaqsData] = useState([]);
 
+
+  const pressFirebase = async () => {
+    const combinedQuestions = [];
+    const db = getFirestore();
+    const q = query(collection(db, 'faqs'));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      const questions = doc.data().listOfQuestion;
+      if (Array.isArray(questions)) {
+        combinedQuestions.push(...questions);
+      }
+      console.log(doc.id, ' => ', doc.data());
+    });
+    setFaqsData(combinedQuestions);
+  };
+
   useEffect(() => {
     const unsubscribed = async () => {
-      const docRef = doc(db, 'faqs', 'KXdxBME0zbWkuwGZ1hs9');
-      const docSnap = await getDoc(docRef);
+    const combinedQuestions = [];
+    const db = getFirestore();
+    const q = query(collection(db, 'faqs'));
+    const querySnapshot = await getDocs(q);
 
-      if (docSnap.exists()) {
-        setFaqsData(docSnap.data().listOfQuestion);
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log('No such document!');
+    querySnapshot.forEach((doc) => {
+      const questions = doc.data().listOfQuestion;
+      if (Array.isArray(questions)) {
+        combinedQuestions.push(...questions);
       }
-    };
-    unsubscribed();
+      console.log(doc.id, ' => ', doc.data());
+    });
+    setFaqsData(combinedQuestions);
+  }
+  unsubscribed()
   }, []);
 
   return (
-    <View style={{ flex: 1, backgroundColor: Colors.soaringEagle }}>
+    <View style={{ flex: 1, backgroundColor: Colors.darkGreen }}>
       {/* <Image
         className="absolute left-0 top-0 h-full w-full"
         source={require('../../../../assets/Background/RopeCourse.png')}
@@ -43,8 +65,9 @@ const MainFaqScreen = () => {
           color="white"
           style={{ marginTop: 2, marginLeft: 10 }}
         />
-        <View className='items-center'>
+        <View className="items-center">
           {faqsData.map((item, index) => {
+            console.log('Count', index);
             return <FaqsList item={item} key={index} />;
           })}
         </View>

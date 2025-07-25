@@ -9,6 +9,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { useFrameCallback } from 'react-native-reanimated';
 
+
 const SiteCategory = () => {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);

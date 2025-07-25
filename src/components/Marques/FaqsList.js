@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, useWindowDimensions } from 'react-native';
 import React from 'react';
 import { router } from 'expo-router';
+import Colors from '~/src/assets/constant/Colors';
 
 const FaqsList = ({ index, item }) => {
   const { width, height } = useWindowDimensions();
@@ -12,7 +13,7 @@ const FaqsList = ({ index, item }) => {
           params: item,
         })
       }>
-      <View className="mt-2 bg-yellow-300 p-2" style={{ width: width * 0.95, borderRadius: 10 }}>
+      <View className="mt-2 p-2" style={{ width: width * 0.95, borderRadius: 10, backgroundColor: Colors.goldYellow }}>
         <Text className="p-3 text-lg font-semibold ">{item.question}</Text>
 
         {/* <Divider width={1} color="white" /> */}

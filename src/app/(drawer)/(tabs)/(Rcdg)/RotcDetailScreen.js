@@ -100,7 +100,7 @@ const RotcDetailScreen = () => {
           <View style={{width:width, height:height*.4}}/>
         </ScrollView>
       </View> */}
-      <View className="flex-1" style={{ backgroundColor: Colors.turbo }}>
+      <View className="flex-1" style={{ backgroundColor: Colors.goldYellow }}>
         <SafeAreaView className="flex-1">
           <View className="ml-5 mt-24">
             <Text className="text-4xl font-bold text-neutral-50">UST</Text>
@@ -115,8 +115,8 @@ const RotcDetailScreen = () => {
           />
           <ScrollView>
             <View>
-              <Text className="px-2 py-2 text-2xl font-semibold italic">ROTC</Text>
-              <Text className="p-2 text-justify text-lg">
+              <Text className="px-2 py-2 text-2xl font-semibold italic ml-1">ROTC</Text>
+              <Text className="p-2 text-justify text-lg ml-3 mr-3">
                 The Reserve Officers' Training Course (ROTC) is a military training program for
                 college students designed to develop leadership skills and prepare them for service
                 as officers in the reserve force. It combines academic instruction with physical and
@@ -133,7 +133,7 @@ const RotcDetailScreen = () => {
 
             <View>
               <Text className="px-2 py-2 text-2xl font-semibold italic">Task Organization</Text>
-              <Text className="p-2 text-justify text-lg">
+              <Text className="p-2 text-justify text-lg ml-3 mr-3">
                 The task organization of ROTC typically includes a Headquarters unit overseeing
                 administrative, training, and operational functions, supported by companies or
                 platoons composed of cadets grouped by year level or specialization. Each unit is
@@ -151,29 +151,29 @@ const RotcDetailScreen = () => {
             <View>
               <Text className="px-2 py-2 text-2xl font-semibold italic">Mission</Text>
               <View>
-                <View className=" flex-row">
+                <View className=" flex-row ml-1 mr-3">
                   <View className="mt-0.5 w-1/12 items-center">
-                    <Entypo name="controller-record" size={24} color="black" />
+                    <Entypo name="controller-record" size={24} color={Colors.darkGreen} />
                   </View>
-                  <Text className="w-11/12 px-2 text-justify text-lg">
+                  <Text className="w-11/12 px-2 text-justify text-lg3">
                   Instill discipline, leadership, and patriotism among the youth.
                   </Text>
                 </View>
 
-                <View className=" flex-row">
+                <View className=" flex-row ml-1 mr-3">
                   <View className="mt-0.5 w-1/12 items-center">
-                    <Entypo name="controller-record" size={24} color="black" />
+                    <Entypo name="controller-record" size={24} color={Colors.darkGreen} />
                   </View>
-                  <Text className="w-11/12 px-2 text-justify text-lg">
+                  <Text className="w-11/12 px-2 text-justify text-lg  mr-3">
                   Develop a pool of trained reservists for national defense and disaster response.
                   </Text>
                 </View>
 
-                <View className=" flex-row">
+                <View className=" flex-row  ml-1 mr-3">
                   <View className="mt-0.5 w-1/12 items-center">
-                    <Entypo name="controller-record" size={24} color="black" />
+                    <Entypo name="controller-record" size={24} color={Colors.darkGreen} />
                   </View>
-                  <Text className="w-11/12 px-2 text-justify text-lg">
+                  <Text className="w-11/12 px-2 text-justify text-lg mr-3">
                   Prepare students for potential commission as officers in the reserve force.
                   </Text>
                 </View>
@@ -189,7 +189,7 @@ const RotcDetailScreen = () => {
             <View>
               <Text className="px-2 py-2 text-2xl font-semibold italic">Other Details</Text>
               <View>
-                <View className=" flex-row">
+                <View className=" flex-row  ml-1 mr-3">
                   <View className="mt-0.5 w-1/12 items-center">
                     <Entypo name="controller-record" size={24} color="black" />
                   </View>
@@ -198,7 +198,7 @@ const RotcDetailScreen = () => {
                   </Text>
                 </View>
 
-                <View className=" flex-row">
+                <View className=" flex-row  ml-1 mr-3">
                   <View className="mt-0.5 w-1/12 items-center">
                     <Entypo name="controller-record" size={24} color="black" />
                   </View>

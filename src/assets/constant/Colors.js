@@ -5,6 +5,12 @@ export default {
   juneBud: '#badc58',
   turbo: '#f9ca24',
 
+  goldYellow: '#FCD116',
+  darkYellow: '#C49A17',
+  darkGreen: '#132E04',
+  bloodRed: '#D41C24',
+
+
   black: '#112233',
   white: 'white',
   accent: '#333999',

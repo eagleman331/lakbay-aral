@@ -45,7 +45,7 @@ export const FlatCategories = ({ item }) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: Colors.juneBud,
+    backgroundColor: Colors.goldYellow,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.3,

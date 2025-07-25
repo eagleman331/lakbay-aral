@@ -15,6 +15,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { router, useLocalSearchParams } from 'expo-router';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import MapLottieButton from '../../../../components/ButtonComponent/MapLottieButton'
+import Colors from '../../../../assets/constant/Colors';
 
 const SiteDetails = () => {
   const { width, height } = useWindowDimensions();
@@ -40,7 +41,7 @@ const SiteDetails = () => {
             source={params.imageFacility}
           />
         </View>
-        <View className="-top-5 h-4/5 w-full rounded-3xl bg-green-400">
+        <View className="-top-5 h-4/5 w-full rounded-3x" style={{backgroundColor: Colors.goldYellow}}>
           <Text className="mt-2 text-center text-xl font-semibold">SITE DETAILS</Text>
 
           <View className="mt-2 p-2">

@@ -8,19 +8,20 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 import Entypo from '@expo/vector-icons/Entypo';
 import Feather from '@expo/vector-icons/Feather';
 import { Divider } from '@rneui/themed';
+import Colors from '~/src/assets/constant/Colors';
 
 const CustomDrawerContent = (props) => {
   return (
     <DrawerContentScrollView
       {...props}
       scrollEnabled={false}
-      contentContainerStyle={{ backgroundColor: '#dde3fe', flex: 1 }}>
+      contentContainerStyle={{ backgroundColor: Colors.goldYellow, flex: 1 }}>
       <View style={{ padding: 20 }}>
         <Image
           source={require('../../assets/ChildTour.png')}
           style={{ width: 100, height: 100, alignSelf: 'center', borderRadius: 20 }}
         />
-        <Text style={{ alignSelf: 'center', fontSize: 18, paddingTop: 10, color: '#5363df' }}>
+        <Text style={{ alignSelf: 'center', fontSize: 18, paddingTop: 10, color: 'black' }}>
           Lakbay Aral CY-2025
         </Text>
       </View>
@@ -28,8 +29,10 @@ const CustomDrawerContent = (props) => {
         <TouchableOpacity
           className="flex-row"
           style={{ paddingLeft: 15, marginTop: 15 }}
-          onPress={() => router.push({ pathname: '/(drawer)/(tabs)/(TouristMap)/TouristHomeScreen' })}>
-          <Ionicons name="home-outline" size={24} color={'grey'} />
+          onPress={() =>
+            router.push({ pathname: '/(drawer)/(tabs)/(TouristMap)/TouristHomeScreen' })
+          }>
+          <Ionicons name="home-outline" size={24} color={Colors.darkGreen} />
           <Text style={{ paddingLeft: 10, alignSelf: 'center' }}>Welcome Home</Text>
         </TouchableOpacity>
         <Divider inset={true} insetType="right" width={1} color="black" style={{ marginTop: 10 }} />
@@ -37,7 +40,7 @@ const CustomDrawerContent = (props) => {
           className="flex-row"
           style={{ paddingLeft: 15, marginTop: 15 }}
           onPress={() => router.push({ pathname: '/(drawer)/(tabs)/(Faqs)/MainFaqScreen' })}>
-          <Entypo name="clipboard" size={24} color="black" />
+          <Entypo name="clipboard" size={24} color={Colors.darkGreen} />
           <Text style={{ paddingLeft: 10, alignSelf: 'center' }}>Frequently Asked Questions</Text>
         </TouchableOpacity>
         <Divider inset={true} insetType="right" width={1} color="black" style={{ marginTop: 10 }} />
@@ -46,17 +49,26 @@ const CustomDrawerContent = (props) => {
           className="flex-row"
           style={{ paddingLeft: 15, marginTop: 15 }}
           onPress={() => router.push({ pathname: '/(drawer)/(tabs)/(Rcdg)/RotcSchoolScreen' })}>
-          <FontAwesome6 name="person-military-rifle" size={24} color="black" />
+          <FontAwesome6 name="person-military-rifle" size={24} color={Colors.darkGreen} />
           <Text style={{ paddingLeft: 10, alignSelf: 'center' }}>Phil. Army ROTC</Text>
         </TouchableOpacity>
         <Divider inset={true} insetType="right" width={1} color="black" style={{ marginTop: 10 }} />
-       
+
+        <TouchableOpacity
+          className="flex-row"
+          style={{ paddingLeft: 15, marginTop: 15 }}
+          onPress={() => router.push({ pathname: '/(drawer)/(tabs)/(Exercise)/ExerciseScreen' })}>
+          <Entypo name="baidu" size={24} color={Colors.darkGreen} />
+          <Text style={{ paddingLeft: 10, alignSelf: 'center' }}>Exercise</Text>
+        </TouchableOpacity>
+        <Divider inset={true} insetType="right" width={1} color="black" style={{ marginTop: 10 }} />
+
         <TouchableOpacity
           className="flex-row"
           style={{ paddingLeft: 15, marginTop: 15 }}
           // onPress={() => router.push({ pathname: '/(drawer)/paywallScreen' })}
-          >
-          <Feather name="coffee" size={24} color="black" />
+        >
+          <Feather name="coffee" size={24} color={Colors.darkGreen} />
           <Text style={{ paddingLeft: 10, alignSelf: 'center' }}>Give a Coffee</Text>
         </TouchableOpacity>
 

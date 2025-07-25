@@ -30,7 +30,7 @@ const SubInfoDataScreen = () => {
   }, []);
 console.log('anotherInfo', anotherInfo)
   return (
-    <View className="flex-1" style={{backgroundColor:Colors.turbo}}>
+    <View className="flex-1" style={{backgroundColor:Colors.goldYellow}}>
       <SafeAreaView>
         <View className="ml-3 mt-24" style={{ height: height * 0.05 }}>
           <Text className="text-4xl font-bold  text-neutral-50">FAQs</Text>
@@ -72,7 +72,7 @@ console.log('anotherInfo', anotherInfo)
               return (
                 <View key={index} className=" flex-row">
                   <View className="mt-1 w-1/12 items-center">
-                  <Entypo name="controller-record" size={24} color='#464342' />
+                  <Entypo name="controller-record" size={24} color={Colors.darkGreen} />
                   </View>
                   <Text className="w-11/12 px-2 text-justify text-lg">{item}</Text>
                 </View>
