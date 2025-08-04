@@ -28,7 +28,7 @@ export default function TouristHomeScreen() {
         /> */}
         <SafeAreaView>
           <View className=" ml-5 mt-16" style={{ height: height * 0.05 }}>
-            <Text className="text-4xl font-bold text-neutral-50">Camp Tour</Text>
+            <Text className="text-4xl font-bold text-neutral-50">Camp Tour- 2ID</Text>
           </View>
           <Divider
             inset={true}

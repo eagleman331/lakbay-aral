@@ -21,14 +21,14 @@ const SubInfoDataScreen = () => {
   const { addInfo, answer, otherInfo, question, anotherInfo } = params;
   const { width, height } = useWindowDimensions();
 
-  console.log('addInfo', typeof addInfo);
+
   useEffect(() => {
     const unsubsribed = () => {
       setBullets(addInfo.split(','));
     };
     unsubsribed();
   }, []);
-console.log('anotherInfo', anotherInfo)
+
   return (
     <View className="flex-1" style={{backgroundColor:Colors.goldYellow}}>
       <SafeAreaView>
