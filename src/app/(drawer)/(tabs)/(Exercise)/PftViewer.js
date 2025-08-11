@@ -26,7 +26,7 @@ const PftViewer = () => {
   const params = useLocalSearchParams();
   const { PftData } = params;
   const sample = JSON.parse(PftData);
-  console.log('Parse Data', sample[1].content);
+
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [completed, setCompleted] = useState(false);

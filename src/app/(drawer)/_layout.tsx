@@ -7,6 +7,7 @@ import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navi
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import Entypo from '@expo/vector-icons/Entypo';
 import Feather from '@expo/vector-icons/Feather';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { Divider } from '@rneui/themed';
 import Colors from '~/src/assets/constant/Colors';
 
@@ -29,11 +30,10 @@ const CustomDrawerContent = (props) => {
         <TouchableOpacity
           className="flex-row"
           style={{ paddingLeft: 15, marginTop: 15 }}
-          onPress={() =>
-            router.push({ pathname: '/(drawer)/(tabs)/(TouristMap)/TouristHomeScreen' })
-          }>
-          <Ionicons name="home-outline" size={24} color={Colors.darkGreen} />
-          <Text style={{ paddingLeft: 10, alignSelf: 'center' }}>Welcome Home</Text>
+          onPress={() => router.push({ pathname: '/(drawer)/(tabs)/(Profile)/ProfileScreen' })}>
+          <AntDesign name="profile" size={24} color={Colors.darkGreen} />
+
+          <Text style={{ paddingLeft: 10, alignSelf: 'center' }}>User Profile</Text>
         </TouchableOpacity>
         <Divider inset={true} insetType="right" width={1} color="black" style={{ marginTop: 10 }} />
         <TouchableOpacity

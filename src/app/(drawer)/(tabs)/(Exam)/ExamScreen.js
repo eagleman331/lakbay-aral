@@ -5,35 +5,25 @@ import {
   useWindowDimensions,
   TouchableOpacity,
   ScrollView,
-  Alert,
   Animated,
 } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import Colors from '../../../../assets/constant/Colors';
 import { Divider } from '@rneui/themed';
-import { Entypo } from '@expo/vector-icons';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import firestore, {
-  collection,
-  query,
-  where,
-  getDocs,
-  getFirestore,
-} from '@react-native-firebase/firestore';
+import firestore from '@react-native-firebase/firestore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ExamScreen = () => {
   const { width, height } = useWindowDimensions();
   const router = useRouter();
   const params = useLocalSearchParams();
   const [faqsData, setFaqsData] = useState([]);
-  const [numberingQuestion, setNumberingQuestion] = useState(1);
-  const [showScore, setShowScore] = useState(false);
   const [questionCounting, setQuestionCounting] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [scoreNgayun, setScoreNgayun] = useState(0);
-  const [testData, setTestData] = useState([]);
-  const [questioIterate, setQuestioIterate] = useState([]);
+  const [testData, setTestData] = useState(null);
   const [cardIndex, setCardIndex] = useState(0);
   const [answerTest, setAnswerTest] = useState([]);
   const [questionLenght, setQuestionLenght] = useState(0);
@@ -42,34 +32,35 @@ const ExamScreen = () => {
   const scrollX = useRef(new Animated.Value(0)).current;
   const progress = Animated.modulo(Animated.divide(scrollX, width), width);
   const ref = useRef();
-  const item = {
-    id: '1',
-    title: 'Welcome to the Exam',
-    description: 'Prepare yourself for the upcoming challenges.',
-  };
-  const numQuestion = faqsData.length;
 
-  function resultLipat() {
-    router.push({
-      pathname: '/(drawer)/(tabs)/(Exam)/ResultScreen',
-      params: { score: scoreNgayun, questions: numQuestion },
-    });
-  }
+  const numQuestion = faqsData.listQuestions ? faqsData.listQuestions.length : 0;
 
-  const PressNext = () => {
-    setQuestionCounting(questionCounting + 1);
-    const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < numQuestion) {
-      setCurrentQuestion(nextQuestion);
-      const lastquestion = currentQuestion + 2;
-      if (lastquestion == numQuestion) {
-        setShowScore(true);
-      }
-    } else {
-      setQuestionLenght(numQuestion);
-      resultLipat();
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem(id, jsonValue);
+    } catch (e) {
+      // saving error
     }
   };
+  const storeScore = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('lastExamScore', jsonValue);
+    } catch (e) {
+      // saving error
+    }
+  };
+  const scoreNow = Math.round((scoreNgayun + 1 / parseInt(numQuestion)) * 100);
+
+  function resultLipat() {
+    storeData({ score: scoreNgayun, questions: numQuestion });
+    storeScore(scoreNow);
+    router.push({
+      pathname: '/(drawer)/(tabs)/(Exam)/ResultScreen',
+      params: { score: scoreNgayun, questions: numQuestion, id },
+    });
+  }
 
   const NextQuestionPlease = (sample, item) => {
     setQuestionCounting(questionCounting + 1);
@@ -82,11 +73,9 @@ const ExamScreen = () => {
       choice4: item.choice4,
       pickAnswer: sample,
     };
-
     setAnswerTest([...answerTest, objQuestion]);
     if (sample === item.answer) {
       setScoreNgayun(scoreNgayun + 1);
-      console.log('Answer', scoreNgayun);
     } else {
     }
     const nextQuestion = currentQuestion + 1;
@@ -94,7 +83,6 @@ const ExamScreen = () => {
       setCurrentQuestion(nextQuestion);
       const lastquestion = currentQuestion + 2;
       if (lastquestion == numQuestion) {
-        setShowScore(true);
       }
     } else {
       setQuestionLenght(numQuestion);
@@ -108,7 +96,6 @@ const ExamScreen = () => {
       setCurrentQuestion(nextQuestion);
       const lastquestion = currentQuestion + 2;
       if (lastquestion == numQuestion) {
-        setShowScore(true);
       }
     } else {
       setQuestionLenght(numQuestion);
@@ -117,26 +104,22 @@ const ExamScreen = () => {
   };
 
   useEffect(() => {
-    const postsRef = firestore().collection('ArmyExams').doc(id).collection(id); // <-- nested collection
-    const unsubscribed = async () => {
-      try {
-        const snapshot = await postsRef.get();
-        const posts = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-
-        setFaqsData(posts);
-        return posts;
-      } catch (error) {
-        console.error('Error fetching nested collection:', error);
-      }
-    };
-    unsubscribed();
+    const subscriber = firestore()
+      .collection('afpExam')
+      .doc(id)
+      .onSnapshot((documentSnapshot) => {
+        setFaqsData(documentSnapshot.data());
+      });
+    // Stop listening for updates when no longer required
+    return () => subscriber();
   }, []);
+
   return (
     <>
       <View className="flex-1 " style={{ backgroundColor: Colors.darkGreen }}>
         <SafeAreaView>
           <Animated.FlatList
-            data={faqsData}
+            data={faqsData.listQuestions}
             ref={ref}
             onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], {
               useNativeDriver: true,
@@ -190,7 +173,6 @@ const ExamScreen = () => {
                       }}>
                       <Text style={{ textAlign: 'justify', flexDirection: 'row' }}>
                         <Text> </Text>
-                        {/* {faqsData[0].question} */}
                         {item.question}
                       </Text>
                     </View>
@@ -254,13 +236,7 @@ const ExamScreen = () => {
                             <Text className="text-lg font-bold">SKIP</Text>
                           </View>
                         </TouchableOpacity>
-                        <TouchableOpacity
-                          onPress={() =>
-                            router.push({
-                              pathname: '/(drawer)/(tabs)/(Exam)/ResultScreen',
-                              params: item,
-                            })
-                          }>
+                        <TouchableOpacity onPress={() => resultLipat()}>
                           <View
                             style={{
                               width: width * 0.3,

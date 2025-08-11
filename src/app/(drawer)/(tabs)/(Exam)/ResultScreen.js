@@ -1,26 +1,53 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  useWindowDimensions,
-  TouchableOpacity,
-  ScrollView,
-  Alert
-} from 'react-native';
-import React from 'react';
+import { View, Text, SafeAreaView, useWindowDimensions } from 'react-native';
+import React, { useEffect } from 'react';
 import Colors from '../../../../assets/constant/Colors';
-import { Card, Button, Icon, SocialIcon } from '@rneui/themed';
-import { Entypo } from '@expo/vector-icons';
-import Fontisto from '@expo/vector-icons/Fontisto';
+import { Card, Button, Icon } from '@rneui/themed';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ResultScreen = () => {
   const { width, height } = useWindowDimensions();
   const router = useRouter();
   const params = useLocalSearchParams();
-  const { score, questions } = params;
+  const { score, questions, id } = params;
   const correctAAnswer = parseInt(score) + parseInt(1);
 
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('listExams');
+
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch (e) {
+      // error reading value
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getMultiple = async (value) => {
+    let values;
+    try {
+      values = await AsyncStorage.multiGet(value);
+    } catch (e) {
+      // read error
+    }
+  };
+
+  const getAllKeys = async () => {
+    let keys = [];
+    try {
+      keys = await AsyncStorage.getAllKeys();
+    } catch (e) {
+      // read key error
+    }
+    getMultiple(keys);
+    // example console.log result:
+    // ['@MyApp_user', '@MyApp_key']
+  };
+  useEffect(() => {
+    getAllKeys();
+  }, []);
   return (
     <>
       <View className="flex-1 " style={{ backgroundColor: Colors.darkGreen }}>
@@ -72,7 +99,6 @@ const ResultScreen = () => {
                 }
                 iconRight
               />
-
               <Button
                 title={`${Math.round((correctAAnswer / parseInt(questions)) * 100)}%`}
                 type="outline"
@@ -102,7 +128,6 @@ const ResultScreen = () => {
                 iconRight
               />
             </View>
-
             <View
               style={{
                 marginTop: 80,
@@ -112,7 +137,6 @@ const ResultScreen = () => {
               </Text>
             </View>
             <Card.Divider inset={true} insetType="rimiddleght" />
-
             <View
               style={{
                 flexDirection: 'row',
@@ -144,7 +168,6 @@ const ResultScreen = () => {
                 }
                 iconRight
               />
-
               <Button
                 onPress={() => router.push({ pathname: '/(drawer)/(tabs)/(Exam)/PreExamPhase' })}
                 type="outline"
