@@ -1,51 +1,14 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  useWindowDimensions,
-  TouchableOpacity,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
-import React, { useEffect, useRef, useState } from 'react';
+import { View, Text, SafeAreaView, useWindowDimensions } from 'react-native';
+import React, { useRef } from 'react';
 import Colors from '../../../../assets/constant/Colors';
-import { Card, Button, Icon, SocialIcon, Divider } from '@rneui/themed';
-import { Entypo } from '@expo/vector-icons';
-import Fontisto from '@expo/vector-icons/Fontisto';
+import { Button, Divider } from '@rneui/themed';
 import LottieView from 'lottie-react-native';
 import { useRouter } from 'expo-router';
-import firestore from '@react-native-firebase/firestore';
 
 const PreExamPhase = () => {
   const { width, height } = useWindowDimensions();
-    const [faqsData, setFaqsData] = useState([]);
   const animation = useRef(null);
   const router = useRouter();
-  const item = {
-    id: '1',
-    title: 'Welcome to the Exam',
-    description: 'Prepare yourself for the upcoming challenges.',
-  };
-
-    const getNestedCollection = async () => {
-    const userId = 'USER_ID'; // Replace with actual user ID
-    const postsRef = firestore()
-      .collection('ArmyExams')
-      .doc('fy6fB6lA3dZYrdXisuPQ')
-      .collection('fy6fB6lA3dZYrdXisuPQ'); // <-- nested collection
-
-    try {
-      const snapshot = await postsRef.get();
-      const posts = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setFaqsData(posts)
-      return posts;
-    } catch (error) {
-      console.error('Error fetching nested collection:', error);
-    }
-  };
-useEffect(() => {
-  getNestedCollection()
-},[])
   return (
     <>
       <View className="flex-1 " style={{ backgroundColor: Colors.darkGreen }}>
@@ -63,13 +26,6 @@ useEffect(() => {
 
                 height: width * 0.9,
               }}>
-              {/* <LottieView
-                style={{  width: 120,
-                                    height: 120,, alignSelf: 'center' }}
-                source={test}
-                autoPlay
-                loop
-              /> */}
               <LottieView
                 autoPlay
                 loop
@@ -83,9 +39,7 @@ useEffect(() => {
               />
             </View>
             <Button
-              onPress={() =>
-                router.push({ pathname: '/(drawer)/(tabs)/(Exam)/ListExamScreen', params: item })
-              } // OnPress event
+              onPress={() => router.push({ pathname: '/(drawer)/(tabs)/(Exam)/ListExamScreen' })}
               title="START"
               icon={{
                 name: 'user',

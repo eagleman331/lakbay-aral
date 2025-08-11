@@ -83,8 +83,8 @@ const SiteCategory = () => {
           distanceInterval: 10, // Update when moving 10 meters
         },
         (location) => {
-          setLocation(location.coords);
-          console.log('location', location);
+          // setLocation(location.coords);
+          // console.log('location', location);
         }
       );
     })();
@@ -163,8 +163,8 @@ const SiteCategory = () => {
             strokeWidth={3}
             strokeColor="hotpink"
             onReady={(result) => {
-              console.log(`Distance: ${result.distance} km`);
-              console.log(`Duration: ${result.duration} min.`);
+              // console.log(`Distance: ${result.distance} km`);
+              // console.log(`Duration: ${result.duration} min.`);
             }}
           />
         ) : null}

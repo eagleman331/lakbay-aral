@@ -1,10 +1,8 @@
 import {
   View,
   Text,
-  Image,
   SafeAreaView,
   TouchableOpacity,
-  Button,
   useWindowDimensions,
   FlatList,
 } from 'react-native';
@@ -12,53 +10,43 @@ import React, { useEffect, useRef, useState } from 'react';
 import { router } from 'expo-router';
 import { Card, Divider } from '@rneui/themed';
 import firestore from '@react-native-firebase/firestore';
-import { collection, query, where, getDocs, getFirestore } from '@react-native-firebase/firestore';
 import LottieView from 'lottie-react-native';
-import FaqsList from '~/src/components/Marques/FaqsList';
 import Colors from '~/src/assets/constant/Colors';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ListExamScreen = () => {
   const [faqsData, setFaqsData] = useState([]);
+  const [testData, setTestData] = useState([]);
   const { width, height } = useWindowDimensions();
   const animation = useRef(null);
-  const data = [1, 2, 3, 4, 5];
 
-  // useEffect(() => {
-  //   const unsubscribed = async () => {
-  //     const combinedQuestions = [];
-  //     const db = getFirestore();
-  //     const q = query(collection(db, 'afpExam'));
-  //     const querySnapshot = await getDocs(q);
-
-  //     querySnapshot.forEach((doc) => {
-  //       const questions = doc.data().listQuestions;
-  //       if (Array.isArray(questions)) {
-  //         combinedQuestions.push(...questions);
-  //       }
-  //     });
-  //     setFaqsData(combinedQuestions);
-  //   };
-  //   unsubscribed();
-  // }, []);
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('listExams', jsonValue);
+    } catch (e) {
+      // saving error
+    }
+  };
 
   const getNestedCollection = async () => {
-    const userId = 'USER_ID'; // Replace with actual user ID
-    const postsRef = firestore()
-      .collection('ArmyExams')
-
-
+    const postsRef = firestore().collection('afpExam');
     try {
       const snapshot = await postsRef.get();
       const posts = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      const listID = posts.map((item) => item.id);
       setFaqsData(posts);
+      // Store the fetched data in AsyncStorage
+
+      storeData(listID);
       return posts;
     } catch (error) {
       console.error('Error fetching nested collection:', error);
     }
   };
-useEffect(() => {
-  getNestedCollection()
-},[])
+  useEffect(() => {
+    getNestedCollection();
+  }, []);
   return (
     <View style={{ flex: 1, backgroundColor: Colors.darkGreen }}>
       <SafeAreaView>
@@ -82,7 +70,7 @@ useEffect(() => {
             horizontal
             keyExtractor={(item) => item.id}
             renderItem={({ item, index }) => {
-              console.log('item', item);
+           
               return (
                 <View key={index}>
                   <TouchableOpacity

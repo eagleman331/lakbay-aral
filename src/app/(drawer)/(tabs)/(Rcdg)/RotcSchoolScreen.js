@@ -89,7 +89,6 @@ export default function RotcSchoolScreen() {
     };
     unsubscribed();
   }, []);
-  console.log('dataRotc', rotcData);
   return (
     <>
       {/* <Stack.Screen options={{ title: 'Tab One' }} /> */}

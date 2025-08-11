@@ -16,7 +16,9 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           headerShown: false,
-          tabBarIcon: ({ color }) => <FontAwesome5 name="campground" size={24} color={Colors.darkGreen}/>,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome5 name="campground" size={24} color={Colors.darkGreen} />
+          ),
         }}
       />
       <Tabs.Screen
@@ -44,9 +46,18 @@ export default function TabLayout() {
           headerShown: false,
           tabBarIcon: ({ color }) => <Entypo name="clipboard" size={24} color={Colors.darkGreen} />,
         }}
-        /> */}
-         <Tabs.Screen name="(Exam)" options={{ href: null,   headerShown: false, }} />
-      <Tabs.Screen name="(Exercise)" options={{ href: null,   headerShown: false, }} />
+      /> */}
+      <Tabs.Screen name="(Exam)" options={{ href: null,   headerShown: false, }} />
+      {/* <Tabs.Screen
+        name="(Profile)"
+        options={{
+          title: 'Profile',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <Entypo name="clipboard" size={24} color={Colors.darkGreen} />,
+        }}
+      /> */}
+      <Tabs.Screen name="(Profile)" options={{ href: null,   headerShown: false, }} />
+      <Tabs.Screen name="(Exercise)" options={{ href: null, headerShown: false }} />
       <Tabs.Screen name="index" options={{ href: null }} />
     </Tabs>
   );
