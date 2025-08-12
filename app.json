@@ -10,6 +10,16 @@
       "favicon": "./src/assets/favicon.png"
     },
     "plugins": [
+       "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "@react-native-firebase/crashlytics",
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": true,
+          "supportsPictureInPicture": true
+        }
+      ],
       "expo-router",
       [
         "expo-location",
@@ -29,32 +39,32 @@
       "tsconfigPaths": true
     },
     "orientation": "portrait",
-    "icon": "./src/assets/CampTours.png",
+    "icon": "./src/assets/lakbatAralIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./src/assets/CampTours.png",
+      "image": "./src/assets/lakbatAralIcon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.eagleman33.lakbayaral"
+      "bundleIdentifier": "com.eagleman33.lakbayaral",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/CampTours.png",
+        "foregroundImage": "./src/assets/lakbatAralIcon.png",
         "backgroundColor": "#ffffff"
       },
       "permissions": [],
       "config": {
         "googleMaps": {
-          "apiKey":"AIzaSyAYtzfMLkMyYh9LbIXIcnzULhmbBrU9LH0"
+          "apiKey": "AIzaSyAql_lhkfFzAyHoXJ1lvXjrjzlREj4v17c"
         }
       },
-      "package": "com.eagleman33.lakbayaral"
+      "package": "com.eagleman33.lakbayaral",
+      "googleServicesFile": "./google-services.json"
     },
     "extra": {
       "router": {

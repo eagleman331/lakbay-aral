@@ -1,4 +1,3 @@
-import { Stack } from 'expo-router';
 import {
   FlatList,
   Image,
@@ -9,35 +8,35 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Container } from '~/src/components/Container';
-import { ScreenContent } from '~/src/components/ScreenContent';
-import { testImages } from '~/src/assets/TestData/imagesTestInvites';
+import { CdcOfficesData } from '~/src/assets/DataApp/RcdgOfficesData';
+import { RcdgCampList } from '~/src/components/Marques/RcdgCampList';
+import { CdcMarqueList } from '../../../../components/Marques/CdcMarqueList';
 
-import { IconsCampTour } from '~/src/assets/DataApp/CampTourSpots';
-import { FlatCategories } from '~/src/components/CampTourMarquee';
-
-export default function Home() {
+export default function RcdgCampHome() {
   const { width, height } = useWindowDimensions();
 
   return (
     <>
       {/* <Stack.Screen options={{ title: 'Tab One' }} /> */}
       <View className="flex-1  bg-gray-400">
+        <Image
+          className="absolute left-0 top-0 h-full w-full"
+          source={require('../../../../assets/Background/RopeCourse.png')}
+        />
         <SafeAreaView>
-          <View className="mt-16 ml-5" >
-            <Text className="text-4xl text-stone-800">Camp Tour</Text>
+          <View className=" ml-5 mt-16" style={{ height: height*0.05 }}>
+            <Text className="text-4xl font-bold text-neutral-50">Camp Tour</Text>
           </View>
           {/* Container of category of places */}
-          <View className="items-center mt-3">
+          <View className=" mt-3 items-center" style={{height: height*0.8}}>
             <FlatList
-              data={IconsCampTour}
+              data={CdcOfficesData}f
               keyExtractor={(item) => item.id.toString()}
-              renderItem={({ item }) => <FlatCategories item={item} />
-              }
+              renderItem={({ item }) => <CdcMarqueList item={item} />}
             />
+
           </View>
         </SafeAreaView>
       </View>
